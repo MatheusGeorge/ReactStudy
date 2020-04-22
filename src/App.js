@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import './App.css';
+import classes from './App.css';
 //import Radium, { StyleRoot } from 'radium';
 import Person from './Person/Person';
 //import styled from 'styled-components';
@@ -124,7 +124,10 @@ class App extends Component {
     //   // }
     // };
 
+    let btnClass = '';
+
     let persons = null;
+
     if(this.state.showPersons) {
       persons = (
         <div>
@@ -142,25 +145,27 @@ class App extends Component {
       //   backgroundColor: 'lightcoral',
       //   color: 'black'
       // }
+
+      btnClass = classes.Red;
     }
 
     // let classes = ['red', 'bold'].join(' '); // 'red bold'
-    let classes = [];
+    let AssignedClasses = [];
     if(this.state.persons.length <= 2) {
-      classes.push('red'); // classes = ['red']'
+      AssignedClasses.push(classes.red); // classes = ['red']'
     }
     if(this.state.persons.length <= 1) {
-      classes.push('bold'); // classes = ['red', 'bold']
+      AssignedClasses.push(classes.bold); // classes = ['red', 'bold']
     }
 
     return (
       //usando por causa do Radium media
       // <StyleRoot>
-      <div className="App">
+      <div className={classes.App}>
         <h1>Hi, I am React</h1>
-        <p className={classes.join(' ')}>This is really working!</p>
+        <p className={AssignedClasses.join(' ')}>This is really working!</p>
         {/* <StyledButton alt={this.state.showPersons} onClick={this.togglePersonsHandler}>Toggle Persons</StyledButton> */}
-        <button className="button" onClick={this.togglePersonsHandler}>Toggle Persons</button>
+        <button className={btnClass} onClick={this.togglePersonsHandler}>Toggle Persons</button>
         {persons}
         {/* { 
           this.state.showPersons === true ? 
